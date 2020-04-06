@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 import { FaGithubAlt, FaPlus, FaSpinner } from 'react-icons/fa'
 
 import api from '../../services/api'
 
-import { Container, Form, SubmitButton, List } from './styles'
+import Container from '../../components/Container'
+import { Form, SubmitButton, List } from './styles'
 
 export default class Main extends Component {
   state = {
@@ -76,7 +78,9 @@ export default class Main extends Component {
           {repositories.map((repository) => (
             <li key={repository.name}>
               <span>{repository.name}</span>
-              <a href="http://localhost:3000/">Details</a>
+              <Link to={`/repository/${encodeURIComponent(repository.name)}`}>
+                Details
+              </Link>
             </li>
           ))}
         </List>
